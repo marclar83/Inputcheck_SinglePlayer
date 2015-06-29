@@ -1,0 +1,17 @@
+E:\Input check\bin\Store 8.1\x86\Master\Assembly-CSharp.dll
+E:\Input check\bin\Store 8.1\x86\Master\Assembly-CSharp.pdb
+E:\Input check\bin\Store 8.1\x86\Master\Assembly-CSharp.pri
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\Assembly-CSharp-metro-vs2013.csprojResolveAssemblyReference.cache
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\Assembly-CSharp.dll
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\Assembly-CSharp.pdb
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\priconfig.xml
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\priconfig.xml.intermediate
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\layout.resfiles
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\layout.resfiles.intermediate
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\resources.resfiles
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\resources.resfiles.intermediate
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\pri.resfiles
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\pri.resfiles.intermediate
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\qualifiers.txt
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\qualifiers.txt.intermediate
+E:\Input check\obj\Store 8.1\x86\Master\x86\Master\MultipleQualifiersPerDimensionFound.txt

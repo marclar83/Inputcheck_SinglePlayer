@@ -1,0 +1,17 @@
+E:\Input check\bin\Store 8.1\x86\Release\Assembly-CSharp.dll
+E:\Input check\bin\Store 8.1\x86\Release\Assembly-CSharp.pdb
+E:\Input check\bin\Store 8.1\x86\Release\Assembly-CSharp.pri
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\Assembly-CSharp-metro-vs2013.csprojResolveAssemblyReference.cache
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\Assembly-CSharp.dll
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\Assembly-CSharp.pdb
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\priconfig.xml
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\priconfig.xml.intermediate
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\layout.resfiles
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\layout.resfiles.intermediate
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\resources.resfiles
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\resources.resfiles.intermediate
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\pri.resfiles
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\pri.resfiles.intermediate
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\qualifiers.txt
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\qualifiers.txt.intermediate
+E:\Input check\obj\Store 8.1\x86\Release\x86\Release\MultipleQualifiersPerDimensionFound.txt

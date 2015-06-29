@@ -1,0 +1,16 @@
+E:\Input check\bin\Phone 8.1\x86\Debug\Assembly-CSharp-firstpass.pdb
+E:\Input check\bin\Phone 8.1\x86\Debug\Assembly-CSharp-firstpass.pri
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\Assembly-CSharp-firstpass-windows-phone-8.1.csprojResolveAssemblyReference.cache
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\Assembly-CSharp-firstpass.dll
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\Assembly-CSharp-firstpass.pdb
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\priconfig.xml
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\priconfig.xml.intermediate
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\layout.resfiles
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\layout.resfiles.intermediate
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\resources.resfiles
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\resources.resfiles.intermediate
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\pri.resfiles
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\pri.resfiles.intermediate
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\qualifiers.txt
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\qualifiers.txt.intermediate
+E:\Input check\obj\Phone 8.1\x86\Debug\x86\Debug\MultipleQualifiersPerDimensionFound.txt
