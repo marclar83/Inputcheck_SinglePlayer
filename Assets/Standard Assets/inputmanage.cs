@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class input : MonoBehaviour {
+public class inputmanage : MonoBehaviour {
 	public int controllerNumber = 0;
 	public bool up;
 	public bool down;
@@ -29,7 +29,13 @@ public class input : MonoBehaviour {
 	private string platform;
 	private int fingerCount;
 	private bool debugActive = false;
+	public bool useTextField;
 	public Text txtField;
+	
+	public inputmanage(){
+		
+		
+	}
 	
 	void Start () {txtField = GetComponent<Text>();}
 	 
@@ -69,7 +75,7 @@ public class input : MonoBehaviour {
 		int j = (controllerNumber-1 < 0) ? 0 : controllerNumber-1;
 		string s1 = Input.GetJoystickNames()[j];
 		s1 = s1.ToUpper();
-			if (debugActive || platform == "debug"){
+			if (debugActive || platform == "debug" && useTextField){
 				txtField.text = (Input.GetJoystickNames()[j]+"\n"+
 					"btn0: "+Input.GetButton("btn"+i+"_0")+"\n"+
 					"btn1: "+Input.GetButton("btn"+i+"_1")+"\n"+
@@ -138,7 +144,8 @@ public class input : MonoBehaviour {
 						axisLY = Input.GetAxis("Axis"+i+"_Y");
 						axisRX = Input.GetAxis("Axis"+i+"_3");
 						axisRY = Input.GetAxis("Axis"+i+"_4");
-						txtField.text = (Input.GetJoystickNames()[j]+"\n"+
+						if (useTextField){
+							txtField.text = (Input.GetJoystickNames()[j]+"\n"+
 							"Up: "+up+"\n"+
 							"Down: "+down+"\n"+
 							"Left: "+left+"\n"+
@@ -158,6 +165,7 @@ public class input : MonoBehaviour {
 							"AxisLY: "+axisLY+"\n"+
 							"AxisRX: "+axisRX+"\n"+
 							"AxisRY: "+axisRY+"\n");
+						}
 					} else { //standard profile
 						up = Input.GetButton("btn"+i+"_4");
 						down = Input.GetButton("btn"+i+"_6");
@@ -170,7 +178,8 @@ public class input : MonoBehaviour {
 						start = Input.GetButton("btn"+i+"_0");
 						l1 = (Input.GetButton("btn"+i+"_8") || Input.GetButton("btn"+i+"_10")) ? true : false;
 						r1 = (Input.GetButton("btn"+i+"_9") || Input.GetButton("btn"+i+"_11")) ? true : false;
-						txtField.text = (Input.GetJoystickNames()[j]+"\n"+
+						if (useTextField){
+							txtField.text = (Input.GetJoystickNames()[j]+"\n"+
 							"Up: "+up+"\n"+
 							"Down: "+down+"\n"+
 							"Left: "+left+"\n"+
@@ -182,6 +191,7 @@ public class input : MonoBehaviour {
 							"Y: "+btnY+"\n"+
 							"L: "+l1+"\n"+
 							"R: "+r1+"\n");
+						}
 					}	
 				break;	
 				case "OSX":
@@ -208,7 +218,30 @@ public class input : MonoBehaviour {
 						axisRY = Input.GetAxis("Axis"+i+"_4");	
 						l3 = Input.GetButton("btn"+i+"_1");
 						r3 = Input.GetButton("btn"+i+"_2");	
-					}else {//if (s1.Contains("BOX 360")){   // require : 360Controller driver: https://github.com/d235j/360Controller
+					}else if (s1.Contains("WIRELESS") && s1.Contains("SONY")){ //PS4
+							up = Input.GetAxis("Axis"+i+"_8") < -0.5;
+							down = Input.GetAxis("Axis"+i+"_8") > 0.5;
+							left = Input.GetAxis("Axis"+i+"_7") < -0.5;
+							right = Input.GetAxis("Axis"+i+"_7") > 0.5;
+							btnA = Input.GetButton("btn"+i+"_1");
+							btnB = Input.GetButton("btn"+i+"_2");
+							btnX = Input.GetButton("btn"+i+"_0");
+							btnY = Input.GetButton("btn"+i+"_3");
+							select = Input.GetButton("btn"+i+"_8");
+							start = (Input.GetButton("btn"+i+"_9") || Input.GetButton("btn"+i+"_13")) ? true : false;
+							l1 = Input.GetButton("btn"+i+"_4");
+							l2 = Input.GetButton("btn"+i+"_6");
+							r1 = Input.GetButton("btn"+i+"_5");
+							r2 = Input.GetButton("btn"+i+"_7");
+							lt = ((Input.GetAxis("Axis"+i+"_5")+1)/2); // between -1 and 1 so +1 = 0 to 2 and /2 = 0 to 1 !
+							rt = ((Input.GetAxis("Axis"+i+"_6")+1)/2); // between -1 and 1 so +1 = 0 to 2 and /2 = 0 to 1 !
+							axisLX = Input.GetAxis("Axis"+i+"_X");
+							axisLY = Input.GetAxis("Axis"+i+"_Y");
+							axisRX = Input.GetAxis("Axis"+i+"_3");
+							axisRY = Input.GetAxis("Axis"+i+"_4");	
+							l3 = Input.GetButton("btn"+i+"_10");
+							r3 = Input.GetButton("btn"+i+"_11");	
+						}else {//if (s1.Contains("BOX 360")){   // require : 360Controller driver: https://github.com/d235j/360Controller
 						up = Input.GetButton("btn"+i+"_5");
 						down = Input.GetButton("btn"+i+"_6");
 						left = Input.GetButton("btn"+i+"_7");
@@ -232,6 +265,7 @@ public class input : MonoBehaviour {
 						l3 = Input.GetButton("btn"+i+"_11");
 						r3 = Input.GetButton("btn"+i+"_12");	
 					}
+					if (useTextField){	
 						txtField.text = (Input.GetJoystickNames()[j]+"\n"+
 						"Up: "+up+"\n"+
 						"Down: "+down+"\n"+
@@ -255,6 +289,7 @@ public class input : MonoBehaviour {
 						"AxisLY: "+axisLY+"\n"+
 						"AxisRX: "+axisRX+"\n"+
 						"AxisRY: "+axisRY+"\n");
+					}
 				break;	
 				case "Android":
 					fingerCount = 0;
@@ -286,33 +321,34 @@ public class input : MonoBehaviour {
 					axisRY = Input.GetAxis("Axis"+i+"_4");
 					l3 = Input.GetButton("btn"+i+"_8");
 					r3 = Input.GetButton("btn"+i+"_9");
-					txtField.text = (Input.GetJoystickNames()[j]+"\n"+
-					"Up: "+up+"\n"+
-					"Down: "+down+"\n"+
-					"Left: "+left+"\n"+
-					"Right: "+right+"\n"+
-					"Select: "+select+"\n"+
-					"Start: "+start+"\n"+
-					"A: "+btnA+"\n"+
-					"B: "+btnB+"\n"+
-					"X: "+btnX+"\n"+
-					"Y: "+btnY+"\n"+
-					"L1: "+l1+"\n"+
-					"L2: "+l2+"\n"+
-					"R1: "+r1+"\n"+
-					"R2: "+r2+"\n"+
-					"L3: "+l3+"\n"+
-					"R3: "+r3+"\n"+
-					"LT: "+lt+"\n"+
-					"RT: "+rt+"\n"+
-					"AxisLX: "+axisLX+"\n"+
-					"AxisLY: "+axisLY+"\n"+
-					"AxisRX: "+axisRX+"\n"+
-					"AxisRY: "+axisRY+"\n");
+					if (useTextField){
+						txtField.text = (Input.GetJoystickNames()[j]+"\n"+
+						"Up: "+up+"\n"+
+						"Down: "+down+"\n"+
+						"Left: "+left+"\n"+
+						"Right: "+right+"\n"+
+						"Select: "+select+"\n"+
+						"Start: "+start+"\n"+
+						"A: "+btnA+"\n"+
+						"B: "+btnB+"\n"+
+						"X: "+btnX+"\n"+
+						"Y: "+btnY+"\n"+
+						"L1: "+l1+"\n"+
+						"L2: "+l2+"\n"+
+						"R1: "+r1+"\n"+
+						"R2: "+r2+"\n"+
+						"L3: "+l3+"\n"+
+						"R3: "+r3+"\n"+
+						"LT: "+lt+"\n"+
+						"RT: "+rt+"\n"+
+						"AxisLX: "+axisLX+"\n"+
+						"AxisLY: "+axisLY+"\n"+
+						"AxisRX: "+axisRX+"\n"+
+						"AxisRY: "+axisRY+"\n");
+					}
 				break;	
 				case "WinM":
 				case "Win":
-					
 					if (s1.Contains("PLAYSTATION(R)3")){
 						up = Input.GetButton("btn"+i+"_4");
 						down = Input.GetButton("btn"+i+"_6");
@@ -336,7 +372,30 @@ public class input : MonoBehaviour {
 						axisRY = Input.GetAxis("Axis"+i+"_4");
 						l3 = Input.GetButton("btn"+i+"_1");
 						r3 = Input.GetButton("btn"+i+"_2");
-					}else if (s1.Contains("BOX 360")){
+					}else if (s1.Contains("WIRELESS CONTROLLER")){ //PS4
+							up = Input.GetAxis("Axis"+i+"_8") > 0.5;
+							down = Input.GetAxis("Axis"+i+"_8") < -0.5;
+							left = Input.GetAxis("Axis"+i+"_7") < -0.5;
+							right = Input.GetAxis("Axis"+i+"_7") > 0.5;
+							btnA = Input.GetButton("btn"+i+"_1");
+							btnB = Input.GetButton("btn"+i+"_2");
+							btnX = Input.GetButton("btn"+i+"_0");
+							btnY = Input.GetButton("btn"+i+"_3");
+							select = Input.GetButton("btn"+i+"_8");
+							start = (Input.GetButton("btn"+i+"_9") || Input.GetButton("btn"+i+"_13")) ? true : false;
+							l1 = Input.GetButton("btn"+i+"_4");
+							l2 = Input.GetButton("btn"+i+"_6");
+							r1 = Input.GetButton("btn"+i+"_5");
+							r2 = Input.GetButton("btn"+i+"_7");
+							lt = ((Input.GetAxis("Axis"+i+"_4")+1)/2); // between -1 and 1 so +1 = 0 to 2 and /2 = 0 to 1 !
+							rt = ((Input.GetAxis("Axis"+i+"_5")+1)/2); // between -1 and 1 so +1 = 0 to 2 and /2 = 0 to 1 !
+							axisLX = Input.GetAxis("Axis"+i+"_X");
+							axisLY = Input.GetAxis("Axis"+i+"_Y");
+							axisRX = Input.GetAxis("Axis"+i+"_3");
+							axisRY = Input.GetAxis("Axis"+i+"_6");	
+							l3 = Input.GetButton("btn"+i+"_10");
+							r3 = Input.GetButton("btn"+i+"_11");	
+						}else if (s1.Contains("BOX 360")){
 						up = Input.GetAxis("Axis"+i+"_7") > 0.5;
 						down = Input.GetAxis("Axis"+i+"_7") < -0.5;
 						left = Input.GetAxis("Axis"+i+"_6") < -0.5;
@@ -399,29 +458,31 @@ public class input : MonoBehaviour {
 						l3 = Input.GetButton("btn"+i+"_8");
 						r3 = Input.GetButton("btn"+i+"_9");
 					}
-					txtField.text = (Input.GetJoystickNames()[j]+"\n"+
-					"Up: "+up+"\n"+
-					"Down: "+down+"\n"+
-					"Left: "+left+"\n"+
-					"Right: "+right+"\n"+
-					"Select: "+select+"\n"+
-					"Start: "+start+"\n"+
-					"A: "+btnA+"\n"+
-					"B: "+btnB+"\n"+
-					"X: "+btnX+"\n"+
-					"Y: "+btnY+"\n"+
-					"L1: "+l1+"\n"+
-					"L2: "+l2+"\n"+
-					"R1: "+r1+"\n"+
-					"R2: "+r2+"\n"+
-					"L3: "+l3+"\n"+
-					"R3: "+r3+"\n"+
-					"LT: "+lt+"\n"+
-					"RT: "+rt+"\n"+
-					"AxisLX: "+axisLX+"\n"+
-					"AxisLY: "+axisLY+"\n"+
-					"AxisRX: "+axisRX+"\n"+
-					"AxisRY: "+axisRY+"\n");
+					if (useTextField){
+						txtField.text = (Input.GetJoystickNames()[j]+"\n"+
+						"Up: "+up+"\n"+
+						"Down: "+down+"\n"+
+						"Left: "+left+"\n"+
+						"Right: "+right+"\n"+
+						"Select: "+select+"\n"+
+						"Start: "+start+"\n"+
+						"A: "+btnA+"\n"+
+						"B: "+btnB+"\n"+
+						"X: "+btnX+"\n"+
+						"Y: "+btnY+"\n"+
+						"L1: "+l1+"\n"+
+						"L2: "+l2+"\n"+
+						"R1: "+r1+"\n"+
+						"R2: "+r2+"\n"+
+						"L3: "+l3+"\n"+
+						"R3: "+r3+"\n"+
+						"LT: "+lt+"\n"+
+						"RT: "+rt+"\n"+
+						"AxisLX: "+axisLX+"\n"+
+						"AxisLY: "+axisLY+"\n"+
+						"AxisRX: "+axisRX+"\n"+
+						"AxisRY: "+axisRY+"\n");
+					}
 				break;
 				case "Linux":
 					up = Input.GetAxis("Axis"+i+"_8") < -0.5;
@@ -446,29 +507,31 @@ public class input : MonoBehaviour {
 					axisRY = Input.GetAxis("Axis"+i+"_5");
 					l3 = Input.GetButton("btn"+i+"_9");
 					r3 = Input.GetButton("btn"+i+"_10");
-					txtField.text = (Input.GetJoystickNames()[j]+"\n"+
-					"Up: "+up+"\n"+
-					"Down: "+down+"\n"+
-					"Left: "+left+"\n"+
-					"Right: "+right+"\n"+
-					"Select: "+select+"\n"+
-					"Start: "+start+"\n"+
-					"A: "+btnA+"\n"+
-					"B: "+btnB+"\n"+
-					"X: "+btnX+"\n"+
-					"Y: "+btnY+"\n"+
-					"L1: "+l1+"\n"+
-					"L2: "+l2+"\n"+
-					"R1: "+r1+"\n"+
-					"R2: "+r2+"\n"+
-					"L3: "+l3+"\n"+
-					"R3: "+r3+"\n"+
-					"LT: "+lt+"\n"+
-					"RT: "+rt+"\n"+
-					"AxisLX: "+axisLX+"\n"+
-					"AxisLY: "+axisLY+"\n"+
-					"AxisRX: "+axisRX+"\n"+
-					"AxisRY: "+axisRY+"\n");
+					if (useTextField){
+						txtField.text = (Input.GetJoystickNames()[j]+"\n"+
+						"Up: "+up+"\n"+
+						"Down: "+down+"\n"+
+						"Left: "+left+"\n"+
+						"Right: "+right+"\n"+
+						"Select: "+select+"\n"+
+						"Start: "+start+"\n"+
+						"A: "+btnA+"\n"+
+						"B: "+btnB+"\n"+
+						"X: "+btnX+"\n"+
+						"Y: "+btnY+"\n"+
+						"L1: "+l1+"\n"+
+						"L2: "+l2+"\n"+
+						"R1: "+r1+"\n"+
+						"R2: "+r2+"\n"+
+						"L3: "+l3+"\n"+
+						"R3: "+r3+"\n"+
+						"LT: "+lt+"\n"+
+						"RT: "+rt+"\n"+
+						"AxisLX: "+axisLX+"\n"+
+						"AxisLY: "+axisLY+"\n"+
+						"AxisRX: "+axisRX+"\n"+
+						"AxisRY: "+axisRY+"\n");
+					}
 				break;
 			}
 		}
